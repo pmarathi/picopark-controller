@@ -26,9 +26,13 @@ func inputHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	fs := http.FileServer(http.Dir("./static"))
-	http.Handle("/", fs)
+	webpage := http.FileServer(http.Dir("./static"))
+	fonts := http.FileServer(http.Dir("./fonts"))
+
+	http.Handle("/", webpage)
+	http.Handle("/fonts/", http.StripPrefix("/fonts/", fonts))
 	http.HandleFunc("/input", inputHandler)
+
 	log.Println("Starting http server...")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

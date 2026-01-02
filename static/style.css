@@ -1,7 +1,21 @@
+@font-face {
+  font-family: "Public Pixel";
+  src: url("/fonts/PublicPixel.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
     background: white;
     color: black;
-    font-family: sans-serif; /* TODO: change font to 8-bit */
+    font-family: "Public Pixel", sans-serif;
+    font-size: 16px; /* power of 8 (8-bit font) */
+    line-height: 16px;
+
+    /* force pixelated rendering */
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+    image-rendering: pixelated;
 }
 
 .controller {
@@ -15,7 +29,8 @@ body {
 button {
     width: 60px;
     height: 60px;
-    font-size: 20px;
+    font-family: "Public Pixel", sans-serif;
+    font-size: 16px;
     background: white;
     color: black;
     border: 2px solid #555;
